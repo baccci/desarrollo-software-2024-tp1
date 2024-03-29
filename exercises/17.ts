@@ -18,5 +18,3 @@ export default function searchNews(keyword: string, category: string) {
 
   return filteredNews
 }
-
-console.log(searchNews('covid', 'world'))
