@@ -3,7 +3,7 @@
 // solo deben mostrarse las noticias donde el usuario publicante se encuentre activo .
 import { data } from '../data'
 
-export default function searchNews(keyword: string, category: string) {
+export default function searchNewsForActiveUsers(keyword: string, category: string) {
   const lowercaseKeyword = keyword.toLowerCase()
   const lowercaseCategory = category.toLowerCase()
   const filteredNews = data.news.filter(news => {
