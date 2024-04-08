@@ -11,6 +11,16 @@ interface SimpleUser {
 export default function getUsersAndAge(): SimpleUser[] {
   return data.users.map((user) => ({
     fullname: `${user.name} ${user.lastName}`,
-    years: new Date().getFullYear() - new Date(user.birthdate).getFullYear()
+    years: calculatePreciseAge(user.birthdate)
   }))
+}
+
+function calculatePreciseAge(birthdate: string): number {
+  const birth = new Date(birthdate)
+  const now = new Date()
+  let age = now.getFullYear() - birth.getFullYear()
+  if (now.getMonth() < birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() < birth.getDate())) {
+    age--
+  }
+  return age
 }
